@@ -72,6 +72,7 @@ DEFAULT_REQUEST_HEADERS = {
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'baidu_spider.middlewares.BaiduSpiderDownloaderMiddleware': 543,
+   'baidu_spider.middlewares.ProxyMiddleware':400
 }
 
 # Enable or disable extensions

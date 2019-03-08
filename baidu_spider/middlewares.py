@@ -4,7 +4,8 @@
 #
 # See documentation in:
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
+import requests
+import lxml
 import random
 import os
 from scrapy import signals
@@ -125,3 +126,29 @@ class BaiduSpiderDownloaderMiddleware(object):
         except:
             data = [default]
         return data
+
+class ProxyMiddleware(object):
+
+    def get_proxy(self):
+        try:
+            response = requests.get('http://127.0.0.1:5010/get')
+            print(response.text)
+            if response.status_code == 200:
+                return response.text
+            return None
+        except ConnectionError:
+            return None
+
+    def get_proxy_val(self):
+        p = self.get_proxy()
+        while p is None:
+            p = self.get_proxy()
+        proxies = {
+            "http" : "http://" + p,
+            "https" : "http://{}".format(p)
+        }
+        return proxies
+
+    def process_request(self,request,spider):
+        request.meta['proxy'] = 'http://'+self.get_proxy()
+        return None

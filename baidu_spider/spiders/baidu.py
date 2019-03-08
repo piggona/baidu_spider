@@ -8,8 +8,8 @@ from baidu_spider.items import BaiduSpiderItem
 
 class BaiduSpider(scrapy.Spider):
     name = 'baidu'
-    allowed_domains = ['www.baidu.com']
-    start_urls = ['http://www.baidu.com/s?q=&tn=baidulocal&ct=2097152&si=&ie=utf-8&cl=3&wd=python']
+    # allowed_domains = ['www.baidu.com']
+    start_urls = ['http://www.bing.com/q=python']
 
     def __get_url_query(self, url):
         m = re.search("wd=(.*)", url).group(1)

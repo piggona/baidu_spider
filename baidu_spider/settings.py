@@ -64,9 +64,10 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'baidu_spider.middlewares.BaiduSpiderSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   'baidu_spider.middlewares.BaiduSpiderSpiderMiddleware': 543,
+   'scrapy.spidermiddlewares.offsite.OffsiteMiddleware': None
+}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
